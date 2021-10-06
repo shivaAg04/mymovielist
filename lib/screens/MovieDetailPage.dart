@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../models/movie.dart';
+
 class MovieDetailPage extends StatelessWidget {
+  // final int movieIndex;
+  // MovieDetailPage(this.movieIndex);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,12 +15,34 @@ class MovieDetailPage extends StatelessWidget {
       ),
       body: Column(
         children: [
+          SizedBox(
+            height: 10,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "    Name ",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+          ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 24),
             child: TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Name of the Movie ',
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              child: Text(
+                "    Description ",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
             ),
           ),
@@ -27,7 +53,7 @@ class MovieDetailPage extends StatelessWidget {
                 border: OutlineInputBorder(),
                 hintText: ' Description ',
                 contentPadding:
-                    EdgeInsets.symmetric(vertical: 100, horizontal: 20),
+                    EdgeInsets.symmetric(vertical: 50, horizontal: 20),
               ),
             ),
           ),
