@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/screens/first_page.dart';
+import 'package:provider/provider.dart';
 import '../widget/movieListTile.dart';
 
 import '../Provider/movies.dart';
@@ -10,11 +12,9 @@ class MovieEditPage extends StatefulWidget {
 }
 
 class _MovieEditPageState extends State<MovieEditPage> {
-  final nameController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
 
-  final descriptionController = TextEditingController();
-
-  List<Movie> test = [];
+  final TextEditingController descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -77,15 +77,18 @@ class _MovieEditPageState extends State<MovieEditPage> {
             height: 10,
           ),
           RaisedButton(
-            color: Theme.of(context).primaryColor,
             child: Text('Add Movie'),
+            color: Theme.of(context).primaryColor,
             onPressed: () {
-              mmlist
-                  .add(Movie(nameController.text, descriptionController.text));
+              Provider.of<Movies>(context, listen: false).addMovie(
+                  nameController.toString(), descriptionController.toString());
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //       builder: (BuildContext context) => first_page(),
+              //     ));
 
-              setState(() {
-                print(nameController.text);
-              });
+              setState(() {});
             },
           ),
         ],
