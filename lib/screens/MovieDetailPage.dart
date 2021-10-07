@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Provider/movies.dart';
+import 'package:provider/provider.dart';
 
 import '../models/movie.dart';
 
@@ -7,6 +9,12 @@ class MovieDetailPage extends StatelessWidget {
   // MovieDetailPage(this.movieIndex);
   @override
   Widget build(BuildContext context) {
+    final movieId = ModalRoute.of(context).settings.arguments;
+    final loadedMovie = Provider.of<Movies>(context)
+        .gMlist
+        .firstWhere((element) => element.MName == movieId);
+    print(movieId);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('My Movie Details '),
@@ -30,6 +38,7 @@ class MovieDetailPage extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
+                prefixText: loadedMovie.MName,
                 hintText: 'Name of the Movie ',
               ),
             ),
@@ -51,7 +60,8 @@ class MovieDetailPage extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: ' Description ',
+                prefixText: loadedMovie.MDiscription,
+                hintText: loadedMovie.MDiscription,
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 50, horizontal: 20),
               ),

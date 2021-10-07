@@ -17,8 +17,9 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (ctx) => Movies(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Movie App ',
-        theme: ThemeData(primaryColor: Colors.yellow),
+        theme: ThemeData(primaryColor: Colors.redAccent),
         home: first_page(),
         routes: {
           '/movieEditPage': (ctx) => MovieEditPage(),

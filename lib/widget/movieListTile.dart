@@ -7,25 +7,26 @@ import '../Provider/movies.dart';
 class movieListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final MlistData = Provider.of<Movies>(context);
-    final Mlist = MlistData.Mlist;
+    final mListData = Provider.of<Movies>(context);
+    final mList = mListData.gMlist;
 
     return ListView.builder(
-      itemCount: Mlist.length,
+      itemCount: mList.length,
       itemBuilder: (_, i) {
         return Container(
+          padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.black, // red as border color.
+              color: Colors.black,
             ),
           ),
           child: ListTile(
             title: Text(
-              Mlist[i].MName,
+              mList[i].MName,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: Text(
-              Mlist[i].MDiscription,
+              mList[i].MDiscription,
               style: TextStyle(fontSize: 14.0),
             ),
             trailing: Icon(Icons.arrow_right),
@@ -34,7 +35,11 @@ class movieListTile extends StatelessWidget {
             dense: true,
 
             onTap: () {
-              Navigator.pushNamed(context, '/movieDetailPage');
+              Navigator.pushNamed(
+                context,
+                '/movieDetailPage',
+                arguments: mList[i].MName,
+              );
             },
 
             // Handle your onTap here.

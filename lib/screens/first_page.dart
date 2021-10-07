@@ -21,7 +21,10 @@ class first_page extends StatelessWidget {
             ),
             RaisedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/movieEditPage');
+                Navigator.pushNamed(
+                  context,
+                  '/movieEditPage',
+                );
               },
               child: Text('Add Movie'),
               color: Theme.of(context).primaryColor,
